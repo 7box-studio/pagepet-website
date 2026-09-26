@@ -1,0 +1,31 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.token
+credentials.json
+secrets.*
+
+# Private notes and assistant configuration
+.private/
+.agents/
+.codex/
+prompt.md
+plans/
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+.next/
+.cache/
+coverage/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store

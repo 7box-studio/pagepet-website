@@ -4,10 +4,10 @@ This document describes the public services around PagePet Reader. It belongs to
 
 ## Repository boundaries
 
-- `pagepet-landing` owns the one-page site, product explanation, screenshots, supported-device list, release links, installation and recovery guidance, and links to the PagePet Reader and 7box-studio channels.
+- `pagepet-website` owns the one-page site, product explanation, screenshots, supported-device list, release links, installation and recovery guidance, and links to the PagePet Reader and 7box-studio channels.
 - `pagepet-converter-core` is the shared conversion repository. It contains the format conversion library and a local command-line interface, plus format tests. It has no Telegram or web code, network access, credentials, or user interface.
 - `pagepet-bot` owns the Telegram conversation: receiving a book, showing the available conversion choices, sending progress and error messages, and returning the result. It includes `pagepet-converter-core` as a submodule at a reviewed commit.
-- `pagepet-landing` owns the public site. If a web upload form is added, its backend or worker includes the same `pagepet-converter-core` submodule and exposes a small versioned endpoint to the browser. The browser does not carry a second conversion implementation.
+- `pagepet-website` owns the public site. If a web upload form is added, its backend or worker includes the same `pagepet-converter-core` submodule and exposes a small versioned endpoint to the browser. The browser does not carry a second conversion implementation.
 
 The landing page, Telegram bot, and converter core are separate repositories. The core is intentionally a submodule of the bot and the site's server-side conversion component. It is not a submodule of the firmware. The firmware repository should stay focused on the device and must not receive server dependencies or bot tokens.
 

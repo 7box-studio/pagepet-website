@@ -1,0 +1,3 @@
+[submodule "converter-core"]
+	path = converter-core
+	url = https://github.com/7box-studio/pagepet-converter-core.git

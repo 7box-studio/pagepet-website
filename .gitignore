@@ -24,6 +24,11 @@ build/
 .next/
 .cache/
 coverage/
+__pycache__/
+*.py[cod]
+.venv/
+*.fb2
+*.epub
 
 # Editor and OS files
 .vscode/

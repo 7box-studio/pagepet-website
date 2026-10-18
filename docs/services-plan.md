@@ -13,9 +13,9 @@ The website, Telegram bot, and converter core are separate repositories. The web
 
 ## First useful version
 
-1. Publish a calm explanation of PagePet Reader as a CrossPoint Reader based firmware fork with an optional reading companion.
+1. Publish a calm explanation of PagePet Reader as a FreeInk-based firmware project with an optional reading companion.
 2. Add a short supported-device and installation section only after the corresponding firmware build and device test exist.
-3. Use calibre for common book formats through `pagepet-converter-core`, with EPUB as the default output. Exclude PDF.
+3. Use calibre for common book formats through `pagepet-converter-core`, with TXT as the default output while the X3 firmware reads only TXT. Exclude PDF.
 4. Run the website and converter in Docker. Keep explicit size and concurrency limits, error responses, and temporary-file cleanup.
 5. Add the same core as a submodule to `pagepet-converter-bot`. The normal conversation should use buttons, with clear errors and no command typing required. Make an outbound proxy configurable through deployment secrets for environments that need it.
 6. Check output formats against real books and PagePet Reader before treating conversion quality as verified. Keep the website independently accessible from Telegram.

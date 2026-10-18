@@ -20,9 +20,11 @@ def health() -> dict[str, str]:
 @router.get("/", response_class=HTMLResponse)
 @router.get("/downloads", response_class=HTMLResponse)
 @router.get("/convert", response_class=HTMLResponse)
+@router.get("/guide", response_class=HTMLResponse)
 @router.get("/en", response_class=HTMLResponse)
 @router.get("/en/downloads", response_class=HTMLResponse)
 @router.get("/en/convert", response_class=HTMLResponse)
+@router.get("/en/guide", response_class=HTMLResponse)
 def page_route(request: Request) -> Response:
     path = request.url.path
     language = "en" if path == "/en" or path.startswith("/en/") else "ru"

@@ -62,6 +62,13 @@ COPY = {
         "guide_step_4_title": "Продолжите позже",
         "guide_step_4": "Нажмите «Назад», чтобы вернуться к списку. На главном экране «Назад» открывает последнюю сохранённую книгу. Кнопка питания переводит устройство в сон.",
         "guide_keys_title": "Кнопки во время чтения",
+        "guide_diagram_desc": "Схема Xteink X3: боковые клавиши листают страницы; сверху справа питание; снизу слева направо: назад, OK, следующая и предыдущая страницы.",
+        "guide_power": "Сон",
+        "guide_power_detail": "Питание",
+        "guide_prev": "Предыдущая",
+        "guide_next": "Следующая",
+        "guide_back": "К списку",
+        "guide_ok": "Размер текста",
         "guide_key_up": "Назад на страницу",
         "guide_key_down": "Вперёд на страницу",
         "guide_key_ok": "Размер текста",
@@ -129,6 +136,13 @@ COPY = {
         "guide_step_4_title": "Pick up later",
         "guide_step_4": "Press Back to return to the book list. On Home, Back opens the last saved book. The power button puts the reader to sleep.",
         "guide_keys_title": "Buttons while reading",
+        "guide_diagram_desc": "Xteink X3 diagram: side buttons turn pages; power is at the top right; bottom buttons from left to right are Back, OK, Next page, Previous page.",
+        "guide_power": "Sleep",
+        "guide_power_detail": "Power",
+        "guide_prev": "Previous",
+        "guide_next": "Next",
+        "guide_back": "Book list",
+        "guide_ok": "Text size",
         "guide_key_up": "Previous page",
         "guide_key_down": "Next page",
         "guide_key_ok": "Text size",
@@ -168,6 +182,42 @@ def _layout(language: str, page: str, body: str) -> bytes:
     return document.encode("utf-8")
 
 
+def _device_diagram(t: dict[str, str]) -> str:
+    """X3 front view. Physical button positions: official X3 User Guide, page 3."""
+    label = lambda key: escape(t[key])
+    return f'''<section class="guide-diagram" aria-labelledby="guide-diagram-heading">
+<div class="guide-diagram-heading"><p class="guide-screen-label">DEVICE / 01</p><h2 id="guide-diagram-heading">{label('guide_keys_title')}</h2></div>
+<div class="guide-diagram-scroll"><svg class="x3-diagram" viewBox="0 0 940 590" role="img" aria-labelledby="x3-title x3-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="x3-title">{label('guide_keys_title')}</title><desc id="x3-desc">{label('guide_diagram_desc')}</desc>
+<defs><marker id="guide-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M1 1 7 4.5 1 8" fill="none" stroke="#285f4a" stroke-width="1.6"/></marker></defs>
+<g class="diagram-device">
+<rect x="356" y="38" width="228" height="412" rx="20" fill="#c9cbc7" stroke="#20353b" stroke-width="3"/>
+<rect x="364" y="46" width="212" height="396" rx="15" fill="none" stroke="#9da6a1" stroke-width="2"/>
+<rect x="376" y="65" width="188" height="320" rx="5" fill="#f5f3e9" stroke="#778780" stroke-width="2"/>
+<text x="393" y="94" class="device-screen-title">PagePet Reader</text>
+<path d="M393 114h151M393 129h139M393 144h149M393 159h119M393 192h150M393 207h128M393 222h146M393 237h136M393 270h148M393 285h133M393 300h144M393 315h103" stroke="#a5aaa4" stroke-width="3" stroke-linecap="round"/>
+<path d="M352 148h-5v42h5M588 174h5v42h-5M519 34v-4h28v4" fill="#aeb8b0" stroke="#20353b" stroke-width="2"/>
+<rect x="395" y="410" width="83" height="13" rx="6" fill="#e0e2dc" stroke="#78827e" stroke-width="1.5"/>
+<rect x="486" y="410" width="83" height="13" rx="6" fill="#e0e2dc" stroke="#78827e" stroke-width="1.5"/>
+<path d="M436.5 411v11M527.5 411v11" stroke="#87948c" stroke-width="1.3"/>
+<circle cx="415" cy="416.5" r="3" fill="#285f4a"/><circle cx="457" cy="416.5" r="3" fill="#285f4a"/><circle cx="506" cy="416.5" r="3" fill="#285f4a"/><circle cx="548" cy="416.5" r="3" fill="#285f4a"/>
+</g>
+<g class="diagram-lines" fill="none" stroke="#285f4a" stroke-width="2" marker-end="url(#guide-arrow)">
+<path d="M234 179H341"/><path d="M705 202H603"/><path d="M710 82H594L546 35"/>
+<path d="M148 509H350L415 432"/><path d="M338 543H399L457 432"/>
+<path d="M605 509H580L506 432"/><path d="M765 543H675L548 432"/>
+</g>
+<g class="diagram-copy">
+<text x="44" y="156" class="diagram-label">{label('guide_prev')}</text><text x="44" y="181" class="diagram-detail">{label('guide_key_up')}</text>
+<text x="710" y="178" class="diagram-label">{label('guide_next')}</text><text x="710" y="203" class="diagram-detail">{label('guide_key_down')}</text>
+<text x="715" y="65" class="diagram-label">{label('guide_power_detail')}</text><text x="715" y="89" class="diagram-detail">{label('guide_power')}</text>
+<text x="44" y="496" class="diagram-label">BACK</text><text x="44" y="520" class="diagram-detail">{label('guide_back')}</text>
+<text x="258" y="533" class="diagram-label">OK</text><text x="258" y="557" class="diagram-detail">{label('guide_ok')}</text>
+<text x="614" y="496" class="diagram-label">→</text><text x="614" y="520" class="diagram-detail">{label('guide_next')}</text>
+<text x="776" y="533" class="diagram-label">←</text><text x="776" y="557" class="diagram-detail">{label('guide_prev')}</text>
+</g></svg></div></section>'''
+
+
 def render_page(language: str, page: str) -> bytes:
     t = COPY[language]
     if page == "home":
@@ -181,9 +231,9 @@ def render_page(language: str, page: str) -> bytes:
         body = f'''<section class="page-intro"><p class="product-type">TXT · EPUB · FB2</p><h1>{escape(t['convert_title'])}</h1><p class="lead">{escape(t['convert_intro'])}</p></section><section class="convert-layout"><form class="converter-card" id="convert-form" data-language="{language}" data-missing="{escape(t['convert_missing'])}" data-invalid="{escape(t['convert_invalid'])}" data-same="{escape(t['convert_same'])}" data-working="{escape(t['convert_working'])}" data-success="{escape(t['convert_success'])}" data-failed="{escape(t['convert_failed'])}" data-button="{escape(t['convert_button'])}" data-select="{escape(t['select_file'])}"><label class="drop-zone" id="drop-zone" for="book-file"><span class="upload-icon" aria-hidden="true">↥</span><strong id="file-label">{escape(t['select_file'])}</strong><span>{escape(t['drop_file'])}</span></label><input id="book-file" name="file" type="file" accept=".epub,.fb2,.mobi,.azw3,.docx,.txt,.rtf,.odt" required><p class="limit">{escape(t['limit'])}</p><div class="format-row"><label for="output-format">{escape(t['output_label'])}</label><select id="output-format" name="format">{''.join(f'<option value="{format_name}">{format_name.upper()}</option>' for format_name in ('txt', 'epub', 'fb2', 'mobi', 'azw3', 'docx'))}</select></div><button class="button convert-button" type="submit">{escape(t['convert_button'])}<span aria-hidden="true">↗</span></button><p id="status" class="status" role="status" aria-live="polite">{escape(t['convert_idle'])}</p></form><aside class="convert-help"><div class="device-glyph" aria-hidden="true">▣</div><h2>{escape(t['convert_usage_title'])}</h2><p>{escape(t['convert_usage'])}</p></aside></section>'''
     elif page == "guide":
         steps = "".join(f'<li><span class="guide-number">{number:02d}</span><div><h2>{escape(t[f"guide_step_{number}_title"])}</h2><p>{escape(t[f"guide_step_{number}"])}</p></div></li>' for number in range(1, 5))
-        keys = "".join(f'<div class="guide-key"><kbd>{key}</kbd><span>{escape(t[f"guide_key_{name}"])}</span></div>' for key, name in (("↑", "up"), ("↓", "down"), ("OK", "ok"), ("BACK", "back")))
         body = f'''<section class="page-intro guide-intro"><p class="product-type">PagePet Reader · Xteink X3</p><h1>{escape(t['guide_title'])}</h1><p class="lead">{escape(t['guide_intro'])}</p><p class="build-status">{escape(t['guide_status'])}</p></section>
-<section class="guide-layout"><ol class="guide-steps">{steps}</ol><aside class="guide-aside"><div class="guide-key-card"><p class="guide-screen-label">XTEINK X3 / READING</p><h2>{escape(t['guide_keys_title'])}</h2>{keys}</div><div class="guide-help"><h2>{escape(t['guide_note_title'])}</h2><p>{escape(t['guide_note'])}</p><a class="secondary-link" href="{_link(language, 'convert')}">{escape(t['guide_convert'])} ↗</a></div></aside></section>'''
+{_device_diagram(t)}
+<section class="guide-layout"><ol class="guide-steps">{steps}</ol><aside class="guide-aside"><div class="guide-help"><h2>{escape(t['guide_note_title'])}</h2><p>{escape(t['guide_note'])}</p><a class="secondary-link" href="{_link(language, 'convert')}">{escape(t['guide_convert'])} ↗</a></div></aside></section>'''
     else:
         raise ValueError("Unknown page")
     return _layout(language, page, body)

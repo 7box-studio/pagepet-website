@@ -67,6 +67,10 @@ COPY = {
         "guide_power_detail": "Питание",
         "guide_prev": "Предыдущая",
         "guide_next": "Следующая",
+        "guide_front_next": "ВПЕРЁД",
+        "guide_front_prev": "НАЗАД",
+        "guide_front_back": "ВОЗВРАТ",
+        "guide_front_ok": "ВЫБОР",
         "guide_back": "К списку",
         "guide_ok": "Размер текста",
         "guide_key_up": "Назад на страницу",
@@ -141,6 +145,10 @@ COPY = {
         "guide_power_detail": "Power",
         "guide_prev": "Previous",
         "guide_next": "Next",
+        "guide_front_next": "NEXT",
+        "guide_front_prev": "PREVIOUS",
+        "guide_front_back": "BACK",
+        "guide_front_ok": "OK",
         "guide_back": "Book list",
         "guide_ok": "Text size",
         "guide_key_up": "Previous page",
@@ -196,25 +204,25 @@ def _device_diagram(t: dict[str, str]) -> str:
 <rect x="376" y="65" width="188" height="320" rx="5" fill="#f5f3e9" stroke="#778780" stroke-width="2"/>
 <text x="393" y="94" class="device-screen-title">PagePet Reader</text>
 <path d="M393 114h151M393 129h139M393 144h149M393 159h119M393 192h150M393 207h128M393 222h146M393 237h136M393 270h148M393 285h133M393 300h144M393 315h103" stroke="#a5aaa4" stroke-width="3" stroke-linecap="round"/>
-<path d="M352 148h-5v42h5M588 174h5v42h-5M519 34v-4h28v4" fill="#aeb8b0" stroke="#20353b" stroke-width="2"/>
+<path d="M352 148h-5v42h5M588 148h5v42h-5M519 34v-4h28v4" fill="#aeb8b0" stroke="#20353b" stroke-width="2"/>
 <rect x="395" y="410" width="83" height="13" rx="6" fill="#e0e2dc" stroke="#78827e" stroke-width="1.5"/>
 <rect x="486" y="410" width="83" height="13" rx="6" fill="#e0e2dc" stroke="#78827e" stroke-width="1.5"/>
 <path d="M436.5 411v11M527.5 411v11" stroke="#87948c" stroke-width="1.3"/>
 <circle cx="415" cy="416.5" r="3" fill="#285f4a"/><circle cx="457" cy="416.5" r="3" fill="#285f4a"/><circle cx="506" cy="416.5" r="3" fill="#285f4a"/><circle cx="548" cy="416.5" r="3" fill="#285f4a"/>
 </g>
 <g class="diagram-lines" fill="none" stroke="#285f4a" stroke-width="2" marker-end="url(#guide-arrow)">
-<path d="M234 179H341"/><path d="M705 202H603"/><path d="M710 82H594L546 35"/>
+<path d="M234 179H341"/><path d="M705 179H603"/><path d="M710 82H650V18H533V30"/>
 <path d="M148 509H350L415 432"/><path d="M338 543H399L457 432"/>
-<path d="M605 509H580L506 432"/><path d="M765 543H675L548 432"/>
+<path d="M605 509H580L506 432"/><path d="M765 543H750V490L548 432"/>
 </g>
 <g class="diagram-copy">
 <text x="44" y="156" class="diagram-label">{label('guide_prev')}</text><text x="44" y="181" class="diagram-detail">{label('guide_key_up')}</text>
-<text x="710" y="178" class="diagram-label">{label('guide_next')}</text><text x="710" y="203" class="diagram-detail">{label('guide_key_down')}</text>
+<text x="710" y="156" class="diagram-label">{label('guide_next')}</text><text x="710" y="181" class="diagram-detail">{label('guide_key_down')}</text>
 <text x="715" y="65" class="diagram-label">{label('guide_power_detail')}</text><text x="715" y="89" class="diagram-detail">{label('guide_power')}</text>
-<text x="44" y="496" class="diagram-label">BACK</text><text x="44" y="520" class="diagram-detail">{label('guide_back')}</text>
-<text x="258" y="533" class="diagram-label">OK</text><text x="258" y="557" class="diagram-detail">{label('guide_ok')}</text>
-<text x="614" y="496" class="diagram-label">→</text><text x="614" y="520" class="diagram-detail">{label('guide_next')}</text>
-<text x="776" y="533" class="diagram-label">←</text><text x="776" y="557" class="diagram-detail">{label('guide_prev')}</text>
+<text x="44" y="496" class="diagram-label">{label('guide_front_back')}</text><text x="44" y="520" class="diagram-detail">{label('guide_back')}</text>
+<text x="258" y="533" class="diagram-label">{label('guide_front_ok')}</text><text x="258" y="557" class="diagram-detail">{label('guide_ok')}</text>
+<text x="614" y="496" class="diagram-label">{label('guide_front_next')}</text><text x="614" y="520" class="diagram-detail">{label('guide_next')}</text>
+<text x="776" y="533" class="diagram-label">{label('guide_front_prev')}</text><text x="776" y="557" class="diagram-detail">{label('guide_prev')}</text>
 </g></svg></div></section>'''
 
 

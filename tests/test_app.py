@@ -4,11 +4,13 @@ from pathlib import Path
 from unittest.mock import patch
 from zipfile import ZipFile
 from io import BytesIO
+from xml.etree import ElementTree
 
 from fastapi.testclient import TestClient
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from main import app
+from app.pages import render_page
 
 
 FB2 = b'''<?xml version="1.0" encoding="UTF-8"?>
@@ -18,6 +20,22 @@ FB2 = b'''<?xml version="1.0" encoding="UTF-8"?>
 class WebsiteTests(unittest.TestCase):
     def setUp(self):
         self.client = TestClient(app)
+
+    def test_guide_button_diagram(self):
+        for language in ("ru", "en"):
+            page = render_page(language, "guide").decode("utf-8")
+            start = page.index('<svg class="x3-diagram"')
+            end = page.index("</svg>", start) + len("</svg>")
+            svg = ElementTree.fromstring(page[start:end])
+            self.assertEqual(len(svg.findall(".//{http://www.w3.org/2000/svg}circle")), 4)
+            self.assertIn('M352 148h-5v42h5M588 148h5v42h-5', page)
+            self.assertIn('M605 509H580L506 432', page)
+            self.assertIn('M710 82H650V18H533V30', page)
+            self.assertNotIn('class="diagram-label">→', page)
+            self.assertNotIn('class="diagram-label">←', page)
+            if language == "ru":
+                self.assertIn('class="diagram-label">ВОЗВРАТ', page)
+                self.assertIn('class="diagram-label">ВЫБОР', page)
 
     def test_pages_and_health(self):
         self.assertIn("PagePet Reader", self.client.get("/").text)
